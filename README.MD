@@ -1,12 +1,12 @@
 # Dashboards in Grafana of Simulated Data from KepserverEX through InfluxDB  
-*Theme*: To get simulation and visualization of the data under the manipulation of different servers.  
+*Theme*: To get simulation and visualization of the data under the manipulation of different servers.    
 
 
 ## Prerequisite  
 * Install Grafana using [this link](https://grafana.com/grafana/download?platform=windows) and create an account through the provided link  
 * Install the InfluxDB using [this link](https://www.influxdata.com/downloads/) and follow the instructions provided there.  
 * Install the KepserverEX using [this link](https://my.kepware.com/s/login/SelfRegister) for a free trial.  
-* Install Telegraf(version 2.x) from [this link](https://www.influxdata.com/downloads/) and follow provided instructions.
+* Install Telegraf(version 2.x) from [this link](https://www.influxdata.com/downloads/) and follow provided instructions.  
 
 ## KepserverEX  
 * Open the file **Cococola.opf** and go to the tags provided in the devices of it.  
@@ -17,7 +17,7 @@
 > **Note**: Download java JRE software through the [Link](https://www.java.com/en/download/) and start the server.  
 * Now restart the program of KepserverEX which is the play button present on top of the KepserverEx panel.  
 **Note**: Before going to restart the program just run the file "Json_Payload.py" which is the data generation python file.  
-* Check whether the MQTT server is taking values or not throught the opc client which is prensent on the top of the KepserverEX panel or just right click on the Device_1 and select the opc-client.
+* Check whether the MQTT server is taking values or not throught the opc client which is prensent on the top of the KepserverEX panel or just right click on the Device_1 and select the opc-client.  
 
 
 ## Telegraf  
@@ -32,7 +32,8 @@ influxd
 * After that execute the telegraf.conf file by navigating to that file in cmd and execute it through the command
 ~~~
 .\telegraf.exe --config telegraf.conf
-~~~
+~~~  
+
 
 ## grafana-dashboard.json  
 * Before going to extract .json file just add the datasouce of InfluxDB in grafana official_website "http://localhost:3000/"  
