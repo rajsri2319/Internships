@@ -25,7 +25,7 @@
 * ### InfluxDB  
 > Create a bucket and a token in InfluxDB before including them in **telegraf.conf** file.   
 > Before going to execute the telegraf.conf file run the InfluxDB server after navigating to influxd .exe file in command prompt as
-~~~
+> ~~~
 influxd
 ~~~
 > Check the data points in data_explorer of InfluxDB after executing telegraf.conf file.  
