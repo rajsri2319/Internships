@@ -25,21 +25,21 @@
 * Open the **telegraf.conf** file and just make changes of **outputs.influxdb_v2** and change the bucket, token, and organization in it.
 * ### InfluxDB  
 > Create a bucket and a token in InfluxDB before including them in **telegraf.conf** file.   
-> Before going to execute the telegraf.conf file run the InfluxDB server after navigating to influxd .exe file in command prompt as
+> Before going to execute the telegraf.conf file run the InfluxDB server after navigating to influxd .exe file in command prompt using
 > ~~~
 > influxd
 > ~~~
 > Check the data points in data_explorer of InfluxDB after executing telegraf.conf file.  
-* After that execute the telegraf.conf file by navigating to that file in cmd and execute it through the command
+* Execute the "telegraf.conf" file by navigating to that file in command prompt and execute it using the command
 ~~~
 .\telegraf.exe --config telegraf.conf
 ~~~  
 
 
 ## grafana-dashboard.json  
-* Before going to extract .json file just add the datasouce of InfluxDB in grafana official_website "http://localhost:3000/"  
+* Before going to extract .json file just add the datasouce of InfluxDB in grafana official_website "http://localhost:3000/".  
 * Copy and paste the .json code to the import dashboards of grafana official_website and execute it.  
 **Note**: Make sure that InfluxDB, Telegraf.exe, Python code or JSON payload are running in the background.  
 
 
-For more details just go through the Grafana.pdf and to get the overall things go through the "Flowchart.jpg"
+For more details just go through the "Grafana.pdf" and to get the flow go through the "Flowchart.jpg"
