@@ -38,7 +38,7 @@
 
 ## Creating Dashboards in Grafana  
 * Add datasouce of InfluxDB in the grafana official website "http://localhost:3000/" and follow the **Grafana.pdf** document.  
-* To recheck the Dashboard Copy and paste the .json code to  import the dashboard of grafana official website and execute it.  
+* To recheck the Dashboard copy and paste the **Grafana_Json_file.json** code provided in Demo_Dashboards folder to  import the dashboard of grafana official website and execute it.  
 **Note**: Make sure that InfluxDB, Telegraf.exe, Python code or JSON payload are running or executed.  
 
 
