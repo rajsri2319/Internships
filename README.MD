@@ -3,7 +3,7 @@
 
 
 ## Prerequisite  
-* Install Grafana using [this link](https://grafana.com/grafana/download?platform=windows) and create an account through the provided link  
+* Install Grafana using [this link](https://grafana.com/grafana/download?platform=windows) and create an account through the provided link.  
 * Install the InfluxDB using [this link](https://www.influxdata.com/downloads/) and follow the instructions provided there.  
 * Install the KepserverEX using [this link](https://my.kepware.com/s/login/SelfRegister) for a free trial.  
 * Install Telegraf(version 2.x) from [this link](https://www.influxdata.com/downloads/) and follow provided instructions.  
@@ -42,4 +42,4 @@
 **Note**: Make sure that InfluxDB, Telegraf.exe, Python code or JSON payload are running or executed.  
 
 
-For more details go through the "Grafana.pdf" and to get the flow go through the "Flowchart.jpg"
+For more details go through the "Grafana.pdf" and to get the flow go through the "Flowchart.jpg".
