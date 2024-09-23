@@ -36,9 +36,9 @@
 ~~~  
 
 
-## grafana-dashboard.json  
-* Before going to extract .json file add datasouce of InfluxDB in the grafana official website "http://localhost:3000/".  
-* Copy and paste the .json code to  import the dashboard of grafana official website and execute it.  
+## Creating Dashboards in Grafana  
+* Add datasouce of InfluxDB in the grafana official website "http://localhost:3000/" and follow the **Grafana.pdf** document.  
+* To recheck the Dashboard Copy and paste the .json code to  import the dashboard of grafana official website and execute it.  
 **Note**: Make sure that InfluxDB, Telegraf.exe, Python code or JSON payload are running or executed.  
 
 
