@@ -42,4 +42,4 @@
 **Note**: Make sure that influxd.exe, Telegraf.exe, Python code or JSON payload are running or executed.  
 
 
-For more details go through the "Grafana.pdf" and to get the flow go through the "Flowchart.jpg".
+For more details go through the "Documentation.pdf" and to get the flow go through the "Flowchart.jpg".
