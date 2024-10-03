@@ -1,0 +1,693 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFLUXDB-5",
+      "label": "influxdb-5",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "canvas",
+      "name": "Canvas",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.2.0"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-5}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "super-light-blue",
+            "mode": "shades"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 30,
+            "fillOpacity": 85,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Machine Work Orders",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "colorByField": "machine_name",
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "text": {
+          "valueSize": 12
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "machine_name",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-5}"
+          },
+          "query": "union(\r\n  tables: [\r\n    // Filler machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"filler_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Filler\" })),\r\n\r\n    // Capper machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"capper_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Capper\" })),\r\n\r\n    // Labeler machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"labeler_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Labeler\" })),\r\n\r\n    // Palletizer machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"palletizer_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Palletizer\" })),\r\n\r\n    // Packer machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"packer_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Packer\" })),\r\n\r\n    // Wrapper machine\r\n    from(bucket: \"tr1\")\r\n      |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n      |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n      |> filter(fn: (r) => r[\"_field\"] == \"wrapper_work_order\")\r\n      |> last()\r\n      |> map(fn: (r) => ({ _time: r._time, _value: r._value, machine_name: \"Wrapper\" }))\r\n  ]\r\n)\r\n|> yield()\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Machine Work Orders",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-5}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value InProgress_work_order_count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "In Progress"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value OnHold_work_order_count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Hold"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value YetToStart_work_order_count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Yet to Start"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 0,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-5}"
+          },
+          "query": "from(bucket: \"tr1\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)  // Dynamically adjust the time range based on dashboard\r\n  |> filter(fn: (r) => r._measurement == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r._field =~ /^(InProgress_work_order_count|YetToStart_work_order_count|OnHold_work_order_count)$/)  // Only consider true (on) values\r\n  |> group(columns: [\"_field\"])     // Convert the counts to minutes (assuming 30s intervals)\r\n  |> keep(columns: [\"_field\", \"_value\"])  // Keep only _field (machine status) and _value (runtime)\r\n  |> yield(name: \"runtime_per_machine\")\r\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Work Order Status",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-5}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#a46acf",
+            "mode": "fixed"
+          },
+          "displayName": "Total Orders",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 10,
+        "y": 8
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background_solid",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "same_as_value",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": true,
+        "text": {},
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-5}"
+          },
+          "query": "from(bucket: \"tr1\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"total_orders_today\")\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-5}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "orange"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#f7f5f5"
+                },
+                "size": 50,
+                "text": {
+                  "field": "pending_orders",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 112,
+                "left": -11,
+                "top": 30,
+                "width": 468
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgba(36, 41, 46, 1)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Pending Order"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 80,
+                "top": -8,
+                "width": 286
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1727524743253",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-5}"
+          },
+          "query": "from(bucket: \"tr1\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"pending_orders\")\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-5}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "light-green",
+                "value": 0
+              },
+              {
+                "color": "light-yellow",
+                "value": 6
+              },
+              {
+                "color": "light-red",
+                "value": 11
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 12
+      },
+      "id": 11,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "deviations",
+                  "fixed": "red"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fffefe"
+                },
+                "size": 50,
+                "text": {
+                  "field": "deviations",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 120,
+                "left": -1,
+                "rotation": 0,
+                "top": 25,
+                "width": 438
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "rgba(36, 41, 46, 1)"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Deviations"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": 69,
+                "top": -9,
+                "width": 298
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1727526246190",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-5}"
+          },
+          "query": "from(bucket: \"tr1\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"deviations\")\r\n  |> yield(name: \"last\")",
+          "refId": "A"
+        }
+      ],
+      "type": "canvas"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Work Orders",
+  "uid": "fdz9de9m3mi2ob",
+  "version": 19,
+  "weekStart": ""
+}
