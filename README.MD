@@ -30,7 +30,7 @@
 > influxd
 > ~~~
 > Check the data points in data_explorer of InfluxDB after executing telegraf.conf file.  
-* Execute the "telegraf.conf" file by navigating to that file in command prompt and execute it using the command
+* Execute the "telegraf.conf" file by navigating to that file in command prompt and execute it in power shell using the command
 ~~~
 .\telegraf.exe --config telegraf.conf
 ~~~  
@@ -39,7 +39,7 @@
 ## Creating Dashboards in Grafana  
 * Add datasouce of InfluxDB in the grafana official website "http://localhost:3000/" and follow the **Grafana.pdf** document.  
 * To recheck the Dashboard copy and paste the **Grafana_Json_file.json** code provided in Demo_Dashboards folder to  import the dashboard of grafana official website and execute it.  
-**Note**: Make sure that InfluxDB, Telegraf.exe, Python code or JSON payload are running or executed.  
+**Note**: Make sure that influxd.exe, Telegraf.exe, Python code or JSON payload are running or executed.  
 
 
 For more details go through the "Grafana.pdf" and to get the flow go through the "Flowchart.jpg".
