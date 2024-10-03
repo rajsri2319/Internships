@@ -24,7 +24,7 @@
 ## Telegraf  
 * Open the **telegraf.conf** file and just make changes of **outputs.influxdb_v2** and change the bucket, token, and organization in it.
 * ### InfluxDB  
-> Create a bucket and a token in InfluxDB before including them in **telegraf.conf** file.   
+> Create a bucket and a token in InfluxDB before including them in **telegraf.conf** file in the official URL ""http://localhost:8086/"".   
 > Before going to execute the telegraf.conf file run the InfluxDB server after navigating to influxd .exe file in command prompt using
 > ~~~
 > influxd
