@@ -1,0 +1,2356 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFLUXDB",
+      "label": "influxdb",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    },
+    {
+      "name": "DS_INFLUXDB-4",
+      "label": "influxdb-4",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "canvas",
+      "name": "Canvas",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "histogram",
+      "name": "Histogram",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "#f9f9fb",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "text"
+                },
+                "size": 16,
+                "text": {
+                  "fixed": "Machines Status"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 40,
+                "left": 511,
+                "rotation": 0,
+                "top": 14,
+                "width": 290
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724956711325",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "icon": "img/icons/marker/circle.svg",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "icon": "img/icons/marker/circle.svg",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 2
+      },
+      "id": 4,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "_value {_field=\"Filler_status\", _start=\"2024-09-03 15:08:58.816 +0000 UTC\", _stop=\"2024-09-10 15:08:58.816 +0000 UTC\"}",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "text"
+                },
+                "radius": 0,
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Filler_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Filler_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -22,
+                "rotation": 0,
+                "top": 67,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                },
+                "image": {
+                  "fixed": "",
+                  "mode": "field"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "text"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "fixed": "Filler"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 55,
+                "left": -4,
+                "rotation": 0,
+                "top": -4,
+                "width": 224
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Filler_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 2
+      },
+      "id": 10,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "_value {_field=\"Filler_status\", _start=\"2024-09-03 15:08:58.816 +0000 UTC\", _stop=\"2024-09-10 15:08:58.816 +0000 UTC\"}",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Capper_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Capper_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -18,
+                "rotation": 0,
+                "top": 68,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "fixed": "Capper"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 55,
+                "left": -4,
+                "rotation": 0,
+                "top": -4,
+                "width": 229
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Capper_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 2
+      },
+      "id": 11,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "Labeling_status",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "#24292e"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Labeling_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Labeling_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -22,
+                "top": 69,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 24,
+                "text": {
+                  "fixed": "Labeling"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 57,
+                "left": -4,
+                "rotation": 0,
+                "top": -5,
+                "width": 224
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Labeling_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "thresholds"
+          },
+          "displayName": "OEE",
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 40
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 12,
+        "y": 2
+      },
+      "id": 6,
+      "options": {
+        "minVizHeight": 93,
+        "minVizWidth": 75,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "sizing": "manual",
+        "text": {
+          "valueSize": 30
+        }
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "OEE",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "// Aggregate total operating time\r\ntotal_operating_time = from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] =~ /(.+)_operating_time/)\r\n  |> sum(column: \"_value\")\r\n  |> group(columns: [])     // Aggregate across all machines\r\n  |> rename(columns: {_value: \"total_operating_time\"})\r\n\r\n// Aggregate failures\r\nfailures = from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] =~ /(.*)_failure_count/)\r\n  |> sum(column: \"_value\")\r\n  |> group(columns: [])     // Aggregate across all machines\r\n  |> rename(columns: {_value: \"failures\"})\r\n\r\n// Aggregate overall scrap count\r\nscrap_count = from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Overall_scrap_count\")\r\n  |> sum(column: \"_value\")\r\n  |> group(columns: [])     // Aggregate across all machines\r\n  |> rename(columns: {_value: \"overall_scrap_count\"})\r\n\r\n// Combine aggregated results into a single table\r\ncombined = union(tables: [total_operating_time, failures, scrap_count])\r\n  |> group(columns: [])\r\n  |> reduce(\r\n    fn: (r, accumulator) => ({\r\n      total_operating_time: accumulator.total_operating_time + (if exists r.total_operating_time then float(v: r.total_operating_time) else 0.0),\r\n      failures: accumulator.failures + (if exists r.failures then float(v: r.failures) else 0.0),\r\n      overall_scrap_count: accumulator.overall_scrap_count + (if exists r.overall_scrap_count then float(v: r.overall_scrap_count) else 0.0)\r\n    }),\r\n    identity: {total_operating_time: 0.0, failures: 0.0, overall_scrap_count: 0.0}\r\n  )\r\n\r\n// Calculate OEE\r\noee = combined\r\n  |> map(fn: (r) => ({\r\n      _time: now(),\r\n      _value: if r.total_operating_time == 0.0 then 0.0 else (1.0 - (r.failures / r.total_operating_time)) * 100.0  // Simplified OEE formula\r\n  }))\r\n  |> rename(columns: {_value: \"OEE\"})\r\n  |> yield(name: \"OEE\")\r\n",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Labeling_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "transparent",
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 60
+              },
+              {
+                "color": "green",
+                "value": 200
+              }
+            ]
+          },
+          "unit": "m"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 19,
+        "y": 2
+      },
+      "id": 15,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "width": 0
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "field": "Value",
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 0
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#f8f9fa"
+                },
+                "size": 45,
+                "text": {
+                  "field": "Value",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "bottom"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 113,
+                "left": -20,
+                "top": 33,
+                "width": 329
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                },
+                "size": "cover"
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fbfcfd"
+                },
+                "size": 30,
+                "text": {
+                  "fixed": "MTBF",
+                  "mode": "fixed"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 69,
+                "left": -23,
+                "top": 0,
+                "width": 335
+              },
+              "type": "text"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                },
+                "width": 2
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#000000"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 3",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 164,
+                "left": 431,
+                "rotation": 0,
+                "top": 21,
+                "width": 321
+              },
+              "type": "rectangle"
+            }
+          ],
+          "name": "Element 1727434760208",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "OEE",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "// Aggregate total operating time\r\ntotal_operating_time = from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] =~ /(.+)_operating_time/)\r\n  |> sum(column: \"_value\")\r\n  |> group(columns: [])     // Aggregate across all machines\r\n  |> rename(columns: {_value: \"total_operating_time\"})\r\n\r\n// Aggregate failures\r\nfailures = from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] =~ /(.*)_failure_count/)\r\n  |> sum(column: \"_value\")\r\n  |> group(columns: [])     // Aggregate across all machines\r\n  |> rename(columns: {_value: \"failures\"})\r\n\r\n// Combine aggregated results into a single table\r\ncombined = union(tables: [total_operating_time, failures])\r\n  |> group(columns: [])\r\n  |> reduce(\r\n    fn: (r, accumulator) => ({  // Changed the order of arguments\r\n      total_operating_time: accumulator.total_operating_time + (if exists r.total_operating_time then float(v: r.total_operating_time) else 0.0),\r\n      failures: accumulator.failures + (if exists r.failures then float(v: r.failures) else 0.0)\r\n    }),\r\n    identity: {total_operating_time: 0.0, failures: 0.0}\r\n  )\r\n\r\n// Calculate MTBF from aggregated values\r\nmtbf = combined\r\n  |> map(fn: (r) => ({\r\n      _time: now(),\r\n      _value: if r.failures == 0.0 then 0.0 else r.total_operating_time / r.failures\r\n  }))\r\n  |> yield(name: \"MTBF\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Labeling_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 6
+      },
+      "id": 12,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "Palletizing_status",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Palletizing_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Palletizing_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -22,
+                "rotation": 0,
+                "top": 70,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "fixed": "Palletizer"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 54,
+                "left": -4,
+                "rotation": 0,
+                "top": -4,
+                "width": 223
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Palletizing_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 6
+      },
+      "id": 13,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "Packaging_status",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Packaging_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Packaging_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -21,
+                "rotation": 0,
+                "top": 70,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 24,
+                "text": {
+                  "fixed": "Packing"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 53,
+                "left": -4,
+                "rotation": 0,
+                "top": -4,
+                "width": 225
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Packaging_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "boolean"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "false": {
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "Offline"
+                      },
+                      "true": {
+                        "color": "dark-green",
+                        "index": 1,
+                        "text": "Online"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 6
+      },
+      "id": 14,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "field": "Wrapping_status",
+              "fixed": "",
+              "mode": "field"
+            },
+            "size": "fill"
+          },
+          "border": {
+            "color": {
+              "fixed": "text"
+            },
+            "radius": 12,
+            "width": 2
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "field": "Wrapping_status",
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "field": "Wrapping_status",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 50,
+                "left": -18,
+                "rotation": 0,
+                "top": 70,
+                "width": 260
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbec"
+                },
+                "size": 25,
+                "text": {
+                  "fixed": "Wrapping"
+                },
+                "valign": "middle"
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 52,
+                "left": -4,
+                "top": -3,
+                "width": 231
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1724915005308",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Wrapping_status\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "transparent",
+            "mode": "fixed"
+          },
+          "displayName": "SCRAP COUNT",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 19,
+        "y": 6
+      },
+      "id": 16,
+      "options": {
+        "infinitePan": false,
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            }
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "text"
+                },
+                "size": 40,
+                "text": {
+                  "field": "SCRAP COUNT",
+                  "fixed": "",
+                  "mode": "field"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 1",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 130,
+                "left": -19,
+                "top": 51,
+                "width": 323
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "#04163b"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "align": "center",
+                "color": {
+                  "fixed": "#fafbfb"
+                },
+                "size": 30,
+                "text": {
+                  "fixed": "Scrap Count"
+                },
+                "valign": "middle"
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Element 2",
+              "oneClickMode": "off",
+              "placement": {
+                "height": 74,
+                "left": -19,
+                "rotation": 0,
+                "top": -1,
+                "width": 323
+              },
+              "type": "text"
+            }
+          ],
+          "name": "Element 1727435944741",
+          "oneClickMode": "off",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          },
+          "type": "frame"
+        },
+        "showAdvancedTypes": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "alias": "OEE",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) =>\r\n    r[\"_field\"] == \"Capper_failure_count\" or\r\n    r[\"_field\"] == \"Filler_failure_count\" or\r\n    r[\"_field\"] == \"Labeling_failure_count\" or\r\n    r[\"_field\"] == \"Packaging_failure_count\" or\r\n    r[\"_field\"] == \"Palletizing_failure_count\" or\r\n    r[\"_field\"] == \"Wrapping_failure_count\")\r\n  |> group()\r\n  |> sum(column: \"_value\")\r\n  |> rename(columns: {_value: \"Total_scrap_count\"})  // Renaming for better readability\r\n",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Labeling_status"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "type": "canvas"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "m"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Filler_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Filler"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Capper_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Capper"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Labeling_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Labeling"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Packaging_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Packing"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Palletizing_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Palletizer"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value Wrapping_status"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Wrapper"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "alias": "Filler",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
+          "hide": false,
+          "measurement": "mqtt_consumer",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"th\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)  // Dynamically adjust the time range based on dashboard\r\n  |> filter(fn: (r) => r._measurement == \"mqtt_consumer\")\r\n  |> filter(fn: (r) => r._field =~ /^(Capper_status|Filler_status|Labeling_status|Packaging_status|Palletizing_status|Wrapping_status)$/)  // Dynamically filter for the six fields\r\n  |> filter(fn: (r) => r._value == true)  // Only consider true (on) values\r\n  |> group(columns: [\"_field\"])  // Group by the field name to separate machines' runtime\r\n  |> count(column: \"_value\")  // Count occurrences of true values (ticks representing runtime)\r\n  |> map(fn: (r) => ({ r with _value: r._value * 30 }))  // Convert the counts to minutes (assuming 30s intervals)\r\n  |> keep(columns: [\"_field\", \"_value\"])  // Keep only _field (machine status) and _value (runtime)\r\n  |> yield(name: \"runtime_per_machine\")\r\n",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Filler_status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "topic::tag",
+              "operator": "=",
+              "value": "home/sensor/status"
+            }
+          ]
+        }
+      ],
+      "title": "Machine Runtime",
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDB-4}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "combine": false,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB-4}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "boltdb_writes_total",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"try9\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"mqtt_consumer\")  // Adjust measurement name if needed\r\n  |> limit(n: 10)\r\n  |> yield(name: \"sample_data\")\r\n",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "counter"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Status and Work order Quality",
+      "type": "histogram"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "CocoCola",
+  "uid": "ddwzbageko934a",
+  "version": 169,
+  "weekStart": ""
+}
