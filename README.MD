@@ -10,7 +10,7 @@
 
 
 ## KepserverEX  
-* Open the file **Cococola.opf** and go to the tags provided in the devices.  
+* Open the file **Cococola.opf** or **Work_Orders.opf** and go to the tags provided in the devices.  
 * Open properties of a tag and extract the data of address row which is in the format of **Extracted_Data + tag_purpose**.  
 * After that before going to restart the KepserverEX which is present in the the above of the KepserverEX panel install MOSQUITTO software for MQTT purpose and JRE software.  
 * ### MQTT  
